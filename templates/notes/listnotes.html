@@ -1,0 +1,21 @@
+{% csrf_token %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Note</th>
+        <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for note in notes_list %}
+    <!-- row n -->
+    <tr>
+      <td> {{ note.text }} </td>
+      <td> {{ note.created_at }} </td>
+    </tr>
+
+  {% endfor %}
+
+  </tbody>
+</table>

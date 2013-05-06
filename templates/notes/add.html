@@ -1,0 +1,34 @@
+{% block javascript %}
+<!--Extends the javascript block. Some ajax to move from value options to input text -->
+<!--Its an inline javascript, that in a good MVC would be relocated in a .js module  -->
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('select').change(function() {
+                $('#id_text').val($(this).val())
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block form %}
+<!-- This form contains the input for new notes. Logic by Django Forms -->
+<form class='form' method='POST' action='/notes/add/'>
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Submit" />
+</form>
+{% endblock %}
+
+{% block form2 %}
+<!-- This form contains the predefined notes. Dummy storage in value attribute. -->
+<form class='form-inline' method='' action=''>
+    <select name="selector" id="selector">
+        <option value="0" disabled="disabled" selected="selected">--Predefined Notes--</option>
+        <option value="" >--None--</option>
+        <option value="Going to sleep #sleeping">Sleep</option>
+        <option value="Waking up #wakeup">Wake up</option>
+        <option value="Doing work 1 #working">Do work 1</option>
+        <option value="Doing work 2 #working">Do work 2</option>
+    </select>
+</form>
+{% endblock %}
