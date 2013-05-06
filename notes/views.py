@@ -18,7 +18,7 @@ def get_list_notes(request):
     if not tags:
         notes = Note.objects.all().order_by('-created_at')
     else:
-        notes = Note.objects.filter(tags__in=Tag.objects.filter(tag__in=tags)).distinct().order_by(-'created_at')
+        notes = Note.objects.filter(tags__in=Tag.objects.filter(tag__in=tags)).distinct().order_by('-created_at')
     return render_to_response('notes/listnotes.html', {'notes_list': notes}, context_instance=RequestContext(request))
 
 
